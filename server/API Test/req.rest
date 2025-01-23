@@ -1,0 +1,17 @@
+POST http://localhost:3000/api/signup
+Content-Type: application/json
+
+{
+  "email": "tunilata13579nayak@gmail.com",
+  "number": 1234567890,
+  "password": "StrongP@ssw0rd"
+}
+
+###
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+  "email": "tunilata13579nayak@gmail.com",
+  "password": "StrongP@ssw0rd"
+}
