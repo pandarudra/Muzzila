@@ -1,13 +1,14 @@
-import {BrowserRouter as Router, Route, Routes, BrowserRouter} from 'react-router-dom';
-import LoginForm from "./components/Assets/LoginForm/LoginForm";
+import {BrowserRouter , Route, Routes} from 'react-router-dom';
+import  { Login } from "./pages/Login/Login";
+import Sidebar from './pages/Profiles/Sidebar';
 
 export function App() {
   return (
     <div>
      <BrowserRouter>
      <Routes>
-      <Route path="/login" element={<LoginForm />} />
-      
+      <Route path="/login" element={<Login />} />
+      <Route path="/profile" element={<Sidebar />} />
      </Routes>
      </BrowserRouter>
     </div>
