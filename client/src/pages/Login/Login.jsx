@@ -1,9 +1,12 @@
 import "./LoginForm.css";
 import { FaUser, FaLock } from "react-icons/fa";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-import axios from "axios";
+import { wait } from "../../utils/wait";
+import { useAuth } from "../../hooks/useAuth";
+import { axiosInstance } from "../../utils/refresh";
+import { url } from "../../utils/config";
 
 export const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -11,7 +14,16 @@ export const Login = () => {
   const [Password, setPassword] = useState("");
   const [ConfirmPassword, setConfirmPassword] = useState("");
   const [PhoneNumber, setPhoneNumber] = useState("");
+  const navigate = useNavigate();
+  const { auth, loading } = useAuth();
 
+  useEffect(() => {
+    if (!loading && auth) {
+      navigate("/dashboard");
+    }
+  }, [auth, loading, navigate]);
+
+  // register user
   const handleSignup = async (e) => {
     e.preventDefault();
     if (ConfirmPassword !== Password) {
@@ -19,12 +31,47 @@ export const Login = () => {
       return;
     }
     try {
-      const res = await axios.post("http://localhost:3000/api/signup", {
-        email: Email,
-        number: PhoneNumber,
-        password: Password,
-      });
-      console.log(res.data);
+      const res = await axiosInstance.post(
+        `${url}/api/signup`,
+        {
+          email: Email,
+          number: PhoneNumber,
+          password: Password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      const accessToken = res.data.accessToken;
+      localStorage.setItem("token", accessToken);
+      toast.success(res.data.message);
+      await wait(2000);
+      navigate("/dashboard");
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    }
+  };
+
+  // login user
+  const onLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axiosInstance.post(
+        `${url}/api/login`,
+        {
+          email: Email,
+          password: Password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      const accessToken = res.data.accessToken;
+      localStorage.setItem("token", accessToken);
+      toast.success(res.data.message);
+      await wait(2000);
+      navigate("/dashboard");
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong");
@@ -52,13 +99,15 @@ export const Login = () => {
             </button>
           </div>
           {isLogin ? (
-            <form className="form-login">
+            <form onSubmit={onLogin} className="form-login">
               <h1>Login</h1>
               <div className="input-wrapper">
                 <input
                   type="text"
                   placeholder="Email"
                   className="input-field"
+                  value={Email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
                 <FaUser className="icon" />
@@ -68,6 +117,8 @@ export const Login = () => {
                   type="password"
                   placeholder="Password"
                   className="input-field"
+                  value={Password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                 />
                 <FaLock className="icon" />
@@ -75,7 +126,7 @@ export const Login = () => {
               <div className="remember-forget">
                 <Link to="#">Forgot Password</Link>
               </div>
-              <button>LOGIN</button>
+              <button type="submit">LOGIN</button>
               <div className="register-link">
                 <p>
                   Don&apos;t have an account?
