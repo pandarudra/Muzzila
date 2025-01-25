@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
  @import "tailwindcss/base";
  @import "tailwindcss/components";
@@ -20,10 +21,29 @@
     background: url(./components/Assets/LoginForm/2506372.jpg) no-repeat ;
     background-size: cover;
     background-position: center;
+=======
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+>>>>>>> 833c2b5fdb1e99bb26e5630c3f768890eeb659b9
 
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url(./assets/2506372.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-
 }
