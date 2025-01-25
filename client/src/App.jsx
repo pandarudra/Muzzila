@@ -1,5 +1,6 @@
-import {BrowserRouter as Router, Route, Routes, BrowserRouter} from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import LoginForm from "./components/Assets/LoginForm/LoginForm";
+import Sidebar from "./pages/Profiles/Sidebar";
 
 function App() {
   return (
@@ -7,7 +8,8 @@ function App() {
      <BrowserRouter>
      <Routes>
       <Route path="/login" element={<LoginForm />} />
-      
+      <Route path="/profiles" element={<Sidebar />} />
+
      </Routes>
      </BrowserRouter>
     </div>
@@ -16,3 +18,4 @@ function App() {
 }
 
 export default App;
+
