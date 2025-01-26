@@ -1,28 +1,32 @@
-@import url("https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Italiana&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Macondo&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Macando", cursive;
 }
 /* Container styling */
 .container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   height: 100vh;
+  z-index: 1;
 }
 
 /* Form container */
+/* Form container */
 .form-container {
-  background: #fff;
+  background: rgba(8, 6, 6, 0.6);
   padding: 30px;
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+  border-radius: 1rem;
   width: 400px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #008000, 0 0 20px #008000,
+    0 0 25px #70e000, 0 0 30px #008000, 0 0 35px #ff00ff;
 }
-
 /* Form toggle buttons */
 .form-toggle {
   display: flex;
@@ -40,9 +44,9 @@
 }
 
 .form-toggle .active {
-  color: #007bff;
+  color: #006400;
   font-weight: bold;
-  border-bottom: 2px solid #007bff;
+  border-bottom: 2px solid #006400;
 }
 
 /* Input fields */
@@ -56,8 +60,10 @@
   padding: 10px;
   padding-left: 30px;
   border: 1px solid #ced4da;
+  background: #000;
   border-radius: 4px;
   font-size: 14px;
+  color: #fff;
 }
 
 .input-wrapper .icon {
@@ -84,7 +90,7 @@
 }
 
 .remember-forget a {
-  color: #007bff;
+  color: #008000;
   text-decoration: none;
   font-size: 14px;
 }
@@ -97,16 +103,15 @@
 button {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #008000;
   border: none;
   border-radius: 4px;
   color: #fff;
   font-size: 16px;
   cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
+  &&:hover {
+    background-color: #005600;
+  }
 }
 
 /* Register and Login link */
@@ -119,7 +124,7 @@ button:hover {
 
 .register-link a,
 .login-link a {
-  color: #007bff;
+  color: #008000;
   text-decoration: none;
 }
 
@@ -162,7 +167,7 @@ button:hover {
 .form-register button {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #008000;
   border: none;
   border-radius: 4px;
   color: #fff;
@@ -172,5 +177,5 @@ button:hover {
 }
 
 .form-register button:hover {
-  background-color: #0056b3;
+  background-color: #398839;
 }

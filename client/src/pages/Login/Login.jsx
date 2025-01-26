@@ -7,6 +7,7 @@ import { wait } from "../../utils/wait";
 import { useAuth } from "../../hooks/useAuth";
 import { axiosInstance } from "../../utils/refresh";
 import { url } from "../../utils/config";
+import { BackgroundLines } from "../../components/BackgroundLines";
 
 export const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -78,8 +79,9 @@ export const Login = () => {
     }
   };
   return (
-    <div>
+    <BackgroundLines className="flex items-center justify-center w-full flex-col px-4">
       <div className="container">
+        <img src="/logo.png" alt="logo" className="" />
         <Toaster />
         <div className="form-container">
           <div className="form-toggle">
@@ -88,7 +90,7 @@ export const Login = () => {
               className={isLogin ? "active" : ""}
               onClick={() => setIsLogin(true)}
             >
-              LOGIN
+              Login
             </button>
             <button
               type="submit"
@@ -189,6 +191,6 @@ export const Login = () => {
           )}
         </div>
       </div>
-    </div>
+    </BackgroundLines>
   );
 };
